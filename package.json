@@ -1,9 +1,10 @@
 {
   "name": "popmq",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Serviço de armazenamento de historico dos veículos da CETURB. Versão C#.",
   "main": "Program.cs",
   "scripts": {
+    "release": "standard-version",
     "db": "docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Senha@123' -p 1433:1433 --name sql-server -d microsoft/mssql-server-linux",
     "stop:db": "docker stop sql-server && docker rm sql-server",
     "rabbit": "docker run -d --hostname rabbit --name rabbit -p 5672:5672 -p 8080:15672 rabbitmq:3-management",
