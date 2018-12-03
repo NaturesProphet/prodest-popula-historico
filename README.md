@@ -33,11 +33,40 @@ NODE_ENV                    # Em produção, setar o valor production
 Default: null
 ```
 
+## Requiriments para produção
+para rodar em produção, basta o .Net Core 2.1 instalado, além do banco e do rabbit.
+
+### Requiriments para desenvolvimento
+Para rodar localmente em ambiente de teste, é necessário
+.Net Core 2.1 (para rodar o app principal)
+Node 8+ (para usar os scripts pré configurados)
+Docker (para subir os serviços de RabbitMQ e SQLServer)
+
+
+
 ## Ferramentas de teste
 Iniciar o banco docker de teste
 ```bash
 npm run db
-depois execute o script de CREATE que está na raiz do repositorio.
+```
+o app não usa nenhum ORM, mas mesmo assim não precisa rodar o create manualmente, pois em ambientes não-produção eu programei para criar a tabela automaticamente. (aqui o sistema é bruto...)
+
+Iniciar o RabbitMQ de teste
+```bash
+npm run rabbit
+```
+
+Depois de subir o banco e o rabbit, é só startar a aplicação
+```bash
+dotnet run
+```
+o dotnet run já baixa as dependencias e executa tudo sozinho.
+
+
+Para ver funcionando, vc pode executar scripts js que envia uma ou milhares de mensagens de uma vez só para o RabbitMQ.
+```bash
+npm run send:rabbit         # Envia uma mensagem simples ao Rabbit
+npm run sendflood:rabbit    # Envia milhares de mensagens ao rabbit (situação próxima do real)
 ```
 
 Parar o banco docker de teste (exclui os dados)
