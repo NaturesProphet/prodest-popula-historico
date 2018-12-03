@@ -29,5 +29,8 @@
       "types": "conventional-commit-types",
       "helpMessage": "Use \"npm run commit\" instead, we use conventional-changelog format :) (https://github.com/commitizen/cz-cli)"
     }
+  },
+  "dependencies": {
+    "amqplib": "^0.5.3"
   }
 }
