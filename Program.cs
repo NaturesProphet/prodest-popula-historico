@@ -7,6 +7,7 @@ namespace popMQ
 {
     class Program
     {
+        protected static int contagemRecebidos = Ambiente.getContagem();
         protected static DAO dao = new DAO();
         protected static string RMQHost = Ambiente.getRabbitHost();
         protected static string RMQTopic = Ambiente.getRabbitTopic();
@@ -33,13 +34,30 @@ namespace popMQ
                 EventingBasicConsumer consumidorEventos = new EventingBasicConsumer(channel);
                 consumidorEventos.Received += (model, ea) =>
                 {
+                    contagemRecebidos++;
                     byte[] body = ea.Body;
                     String message = Encoding.UTF8.GetString(body);
+                    if (contagemRecebidos == 1)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                        Console.WriteLine("[  POP-MQ  ]   Os dados já estão sendo recebidos...");
+                        Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                        Console.ResetColor();
+                    }
                     if (!Ambiente.isProduction())
                     {
                         Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                         Console.WriteLine("[  POP-MQ  ]   Recebendo dados: " + message);
+                        Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                        Console.ResetColor();
+                    }
+                    if (contagemRecebidos % 15000 == 0)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                        Console.WriteLine("[  POP-MQ  ]   contagem: " + contagemRecebidos + " mensagens");
                         Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                         Console.ResetColor();
                     }
