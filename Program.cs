@@ -65,7 +65,7 @@ namespace popMQ
                     h.setJsonRastreio(message);
                     dao.salvaHistorico(h);
                 };
-                channel.BasicConsume(queue: queueName, autoAck: false, consumer: consumidorEventos);
+                channel.BasicConsume(queue: queueName, autoAck: true, consumer: consumidorEventos);
 
             }
             catch (Exception e)
