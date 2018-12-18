@@ -66,5 +66,20 @@ namespace popMQ
             if (env.Equals("production")) return true;
             return false;
         }
+
+        public static int getContagem()
+        {
+            string env = Environment.GetEnvironmentVariable("CONTAGEM_ANUNCIO");
+            if (env is null) return 10000;
+            try
+            {
+                int contagem = int.Parse(env);
+                return contagem;
+            }
+            catch (Exception e)
+            {
+                return 10000;
+            }
+        }
     }
 }

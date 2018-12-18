@@ -31,6 +31,9 @@ Default: "#"
 
 NODE_ENV                    # Em produção, setar o valor production
 Default: null
+
+CONTAGEM_ANUNCIO            # quantidade de mensagens que o app espera para informar seu status de contagem
+Default: 10000
 ```
 
 ## Requiriments para produção
