@@ -24,7 +24,7 @@ RABBIT_TOPIC                # Apontar o nome do topico a ser escutado
 Default: CETURB
 
 RABBIT_CHANNEL              # Apontar o nome do canal no tópico
-Default: realtime
+Default: realtime.sql
 
 RABBIT_KEY                  # Apontar a chave de roteamento a ser usada para ouvir
 Default: "#"
