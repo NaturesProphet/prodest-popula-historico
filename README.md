@@ -27,13 +27,10 @@ RABBIT_CHANNEL              # Apontar o nome do canal no tópico
 Default: realtime.sql
 
 RABBIT_KEY                  # Apontar a chave de roteamento a ser usada para ouvir
-Default: "#"
+Default: "realtime.sql"
 
-NODE_ENV                    # Em produção, setar o valor production
+NODE_ENV                    # Em produção, setar o valor production para desativar o spam info
 Default: null
-
-CONTAGEM_ANUNCIO            # quantidade de mensagens que o app espera para informar seu status de contagem
-Default: 10000
 ```
 
 ## Requiriments para produção
