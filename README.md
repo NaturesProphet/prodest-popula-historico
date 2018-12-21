@@ -18,7 +18,7 @@ SQL_SERVER_PASSWORD         # Apontar a senha do usuario acima
 Default: Senha@123
 
 RABBIT_HOST                 # Apontar o IP do servidor de RabbitMQ
-Default: CETURB
+Default: localhost
 
 RABBIT_TOPIC                # Apontar o nome do topico a ser escutado
 Default: CETURB
@@ -26,8 +26,8 @@ Default: CETURB
 RABBIT_CHANNEL              # Apontar o nome do canal no tópico
 Default: realtime.sql
 
-RABBIT_KEY                  # Apontar a chave de roteamento a ser usada para ouvir
-Default: "realtime.sql"
+RABBIT_KEY                  # Apontar a chave de roteamento a ser usada para ouvir o Rabbit
+Default: realtime.sql
 
 NODE_ENV                    # Em produção, setar o valor production para desativar o spam info
 Default: null
