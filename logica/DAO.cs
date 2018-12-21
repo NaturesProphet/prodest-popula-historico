@@ -41,26 +41,12 @@ namespace popMQ
                 conexao.Close();
                 if (rows <= 0)
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.WriteLine("\n##############################################");
-                    Console.WriteLine("[   DAO   ]   Algo inesperado aconteceu. ");
-                    Console.Write("Os dados não foram registrados.");
-                    Console.WriteLine("[   DAO   ]   Query executada: " + query);
-                    Console.WriteLine("[   DAO   ]   String de conexão utilizada:");
-                    Console.WriteLine(this.dadosConexao);
-                    Console.WriteLine("##############################################\n");
-                    Console.ResetColor();
+                    X9.OQueRolouNaParada(1, query, dadosConexao, null);
                 }
                 if (!Ambiente.isProduction()) //modo verboso ativo fora de produção. (spam info)
                 {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("\n-------------------------------------------------------");
-                    Console.WriteLine("[   DAO   ]   Informaçẽos armazenadas com sucesso. valor:");
-                    Console.WriteLine(h.getJsonRastreio());
-                    Console.WriteLine("-------------------------------------------------------\n");
-                    Console.ResetColor();
+                    X9.ShowInfo(4, h.getJsonRastreio());
                 }
-
             }
             catch (Exception e)
             {
@@ -78,30 +64,15 @@ namespace popMQ
                 {
                     if (e.Message.Equals("Invalid object name 'veiculo'."))
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("\n##############################################");
-                        Console.WriteLine("[   DAO   ]   Erro ao tentar salvar um Historico   ---->>");
-                        Console.WriteLine("[   DAO   ]   A TABELA 'veiculo' NÃO EXISTE OU NÃO FOI ENCONTRADA!");
-                        Console.WriteLine("[   DAO   ]   String de conexão utilizada: ");
-                        Console.WriteLine(this.dadosConexao);
-                        Console.WriteLine("##############################################\n");
-                        Console.ResetColor();
+                        X9.OQueRolouNaParada(2, this.dadosConexao, null, null);
                     }
                     else
                     {
-                        Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Console.WriteLine("\n##############################################");
-                        Console.WriteLine("[   DAO   ]   Erro ao tentar salvar um Historico\n");
-                        Console.WriteLine(e.Message);
-                        Console.WriteLine("[   DAO   ]   String de conexão utilizada: ");
-                        Console.WriteLine(this.dadosConexao);
-                        Console.WriteLine("##############################################\n");
-                        Console.ResetColor();
+                        X9.OQueRolouNaParada(3, e.Message, this.dadosConexao, null);
                     }
                 }
             }
         }
-
 
         public void CreateTable()
         {
@@ -122,33 +93,16 @@ namespace popMQ
                     comando.ExecuteNonQuery();
                     comando.Dispose();
                     conexao.Close();
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("\n##############################################");
-                    Console.WriteLine("[   DAO   ]   TABELA GERADA AUTOMATICAMENTE");
-                    Console.WriteLine("##############################################\n");
-                    Console.ResetColor();
+                    X9.ShowInfo(5, null);
                 }
                 catch (Exception e)
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("\n##############################################");
-                    Console.WriteLine("[   DAO   ]   Erro ao tentar CRIAR a tabela veiculo\n");
-                    Console.WriteLine(e.Message);
-                    Console.WriteLine("[   DAO   ]   String de conexão utilizada: ");
-                    Console.WriteLine(this.dadosConexao);
-                    Console.WriteLine("[   DAO   ]   Query de CREATE TABLE utilziada: ");
-                    Console.WriteLine(create);
-                    Console.WriteLine("##############################################\n");
-                    Console.ResetColor();
+                    X9.OQueRolouNaParada(4, e.Message, this.dadosConexao, create);
                 }
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("\n##############################################");
-                Console.WriteLine("[   DAO   ]   NÃO É PERMITIDO CRIAR NOVAS TABELAS EM PRODUÇÃO\n");
-                Console.WriteLine("##############################################\n");
-                Console.ResetColor();
+                X9.ShowInfo(6, null);
             }
         }
     }

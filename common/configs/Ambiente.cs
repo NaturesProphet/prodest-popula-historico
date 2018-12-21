@@ -49,7 +49,7 @@ namespace popMQ
         public static String getRabbitKey()
         {
             string key = Environment.GetEnvironmentVariable("RABBIT_KEY");
-            if (key is null) key = "#";
+            if (key is null) key = "realtime.sql";
             return key;
         }
         public static String getRabbitChannelName()
@@ -65,21 +65,6 @@ namespace popMQ
             if (env is null) return false;
             if (env.Equals("production")) return true;
             return false;
-        }
-
-        public static int getContagem()
-        {
-            string env = Environment.GetEnvironmentVariable("CONTAGEM_ANUNCIO");
-            if (env is null) return 10000;
-            try
-            {
-                int contagem = int.Parse(env);
-                return contagem;
-            }
-            catch (Exception e)
-            {
-                return 10000;
-            }
         }
     }
 }
