@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.6"></a>
+## [1.1.6](https://gitlab.es.gov.br/espm/Transcol-Online/Realtime/popula-historico/compare/v1.1.5...v1.1.6) (2019-01-16)
+
+
+
 <a name="1.1.5"></a>
 ## [1.1.5](https://gitlab.es.gov.br/espm/popMQ/compare/v1.1.4...v1.1.5) (2018-12-21)
 
