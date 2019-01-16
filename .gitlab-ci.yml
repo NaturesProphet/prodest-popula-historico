@@ -9,7 +9,7 @@ cache:
 
 build_job:
   stage: build
-  image: docker:stable
+  image: registry.es.gov.br/espm/infraestrutura/containers/docker:18.09.1
   only:
     - tags  
 
@@ -24,7 +24,7 @@ build_job:
 
 deploy_job:
   stage: deploy
-  image: registry.es.gov.br/espm/dockers/node:8.12.0-alpine
+  image: registry.es.gov.br/espm/infraestrutura/containers/node:8.12.0
   only:
     - tags
   script:
