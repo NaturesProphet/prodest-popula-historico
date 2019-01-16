@@ -1,6 +1,6 @@
 {
   "name": "popmq",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "Serviço de armazenamento de historico dos veículos da CETURB. Versão C#.",
   "main": "Program.cs",
   "scripts": {
