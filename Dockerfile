@@ -1,4 +1,4 @@
-FROM registry.es.gov.br/espm/dockers/microsoft/dotnet
+FROM registry.es.gov.br/espm/infraestrutura/containers/microsoft/dotnet:2.2-sdk
 
 RUN mkdir -p /usr/app/src
 WORKDIR /usr/app
